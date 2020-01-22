@@ -16,5 +16,5 @@ jobs:
       - run:
           name: Send Via FTP
           command: 
-              set ssl:check-hostname no
-              lftp ftp://${username}:${password}@${hostname} -e "mirror -v -R --exclude .git/ --exclude .circleci/ ./ ${site_name}/test-replicon; quit"
+              lftp ftp://${username}:${password}@${hostname} -e "mirror -v -R --exclude .git/ --exclude .circleci/ ./ ${site_name}/test-replicon; 
+              set ssl:verify-certificate no quit"
