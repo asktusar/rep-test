@@ -8,12 +8,12 @@ jobs:
             - master
     steps:
       - run:
-          name: Install GITFTP
+          name: Install LFTP
           command: |
             sudo apt-get update;
-            sudo apt-get install git-ftp;
+            sudo apt-get install lftp;
       - checkout
       - run:
-          name: Send Via FTP
+          name: Send Via LFTP
           command: 
-              git-ftp ftp://${username}:${password}@${hostname} -e set ssl:verify-certificate no "mirror -v -R --exclude .git/ --exclude .circleci/ ./ ${site_name}/test-replicon quit"
+              lftp ftp://${username}:${password}@${hostname} -e set ssl:verify-certificate no "mirror -v -R --exclude .git/ --exclude .circleci/ ./ ${site_name}/test-replicon quit"
