@@ -14,5 +14,7 @@ jobs:
             sudo apt-get install lftp;
       - checkout
       - run:
-          name: Send Via SFTP
-          command: lftp ftp://${username}:${password}@${hostname} -e "mirror -v -R --exclude .git/ --exclude .circleci/ ./ ${site_name}/test-replicon; quit"
+          name: Send Via FTP
+          command: 
+              set ssl:check-hostname no
+              lftp ftp://${username}:${password}@${hostname} -e "mirror -v -R --exclude .git/ --exclude .circleci/ ./ ${site_name}/test-replicon; quit"
